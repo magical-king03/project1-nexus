@@ -1,23 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import { Route, Routes } from 'react-router-dom';
+import bgmobile from "./img/bg-mob.png"
+import background from "./img/bg.png";
+import Nav from './pages/Nav';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='bg-[#ffe7d2] w-screen h-screen'>
+      <div style={{
+        backgroundImage: `url(${background})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'contain', // Center the background image
+        minHeight: '100vh', // Ensure the container takes up at least the height of the viewport
+      }} className='h-screen hidden md:block lg:bg-center md:bg-top w-screen h-screen'>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+      <div style={{
+        backgroundImage: `url(${bgmobile})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'contain',
+        // minHeight: '100px',
+      }} className='h-screen w-full block md:hidden bg-center'>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
     </div>
   );
 }
